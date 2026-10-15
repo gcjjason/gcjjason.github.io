@@ -781,15 +781,6 @@ footer.site b{color:var(--txt-2);font-weight:600;}
 <!-- ============ SHOWCASE + OVERVIEW ============ -->
 <section class="sec" style="padding-top:0;">
   <div class="shell">
-    <div class="showcase rv" id="showcase">
-      <img src="00835a07804e6b50.jpg.avif" alt="防褥疮气垫床产品效果图"
-           onerror="this.parentNode.innerHTML='&lt;div class=\'ph\'&gt;&lt;div class=\'ico\'&gt;🛏️&lt;/div&gt;&lt;div class=\'t1\'&gt;产品效果图占位&lt;/div&gt;&lt;div class=\'t2\'&gt;把同目录下的 mattress.jpg 放进来即可显示&lt;/div&gt;&lt;/div&gt;'">
-      <div class="cap">
-        <b>防褥疮交替充气气垫床 · 产品效果图</b>
-        <span>Concept Render</span>
-      </div>
-    </div>
-
     <div class="findings">
       <div class="finding rv rv-d1">
         <span class="ic">🩺</span>
@@ -980,6 +971,71 @@ footer.site b{color:var(--txt-2);font-weight:600;}
 <section id="market" class="board">
   <div class="shell">
     <div class="board-head rv">
+<!-- ========环形竞品画廊 3D旋转画廊【市场标题下方】======== -->
+ <div class="gallery-section rv">
+   <div class="gallery-header">
+     <div class="idx">COMPETITOR SHOWCASE</div>
+     <h3>主流竞品产品实拍画廊</h3>
+     <p>国内主流防褥疮气垫床竞品外观参考，鼠标悬浮圆环暂停旋转，点击卡片放大查看大图</p >
+   </div>
+   <div class="carousel-scene">
+     <div class="carousel-ring">
+       <!-- 第1张 -->
+       <div class="gallery-item" onclick="openLightbox('prod-1.jpg')">
+         < img class="gallery-img" src="prod-1.jpg" alt="竞品1 迈德斯特">
+         <div class="gallery-desc">
+           <div class="gallery-title">迈德斯特</div>
+           <div class="gallery-sub">家用中端主流款</div>
+         </div>
+       </div>
+       <!-- 第2张 -->
+       <div class="gallery-item" onclick="openLightbox('prod-2.jpg')">
+         < img class="gallery-img" src="prod-2.jpg" alt="竞品2 鱼跃">
+         <div class="gallery-desc">
+           <div class="gallery-title">鱼跃</div>
+           <div class="gallery-sub">医疗器械老牌厂商</div>
+         </div>
+       </div>
+       <!-- 第3张 -->
+       <div class="gallery-item" onclick="openLightbox('prod-3.jpg')">
+         < img class="gallery-img" src="prod-3.jpg" alt="竞品3 佳禾">
+         <div class="gallery-desc">
+           <div class="gallery-title">佳禾</div>
+           <div class="gallery-sub">高性价比波动气垫</div>
+         </div>
+       </div>
+       <!-- 第4张 -->
+       <div class="gallery-item" onclick="openLightbox('prod-4.jpg')">
+         < img class="gallery-img" src="prod-4.jpg" alt="竞品4 优迪康">
+         <div class="gallery-desc">
+           <div class="gallery-title">优迪康</div>
+           <div class="gallery-sub">入门平价市场</div>
+         </div>
+       </div>
+       <!-- 第5张 -->
+       <div class="gallery-item" onclick="openLightbox('prod-5.jpg')">
+         < img class="gallery-img" src="prod-5.jpg" alt="竞品5 顾高">
+         <div class="gallery-desc">
+           <div class="gallery-title">顾高</div>
+           <div class="gallery-sub">高端智能护理气垫</div>
+         </div>
+       </div>
+       <!-- 第6张 -->
+       <div class="gallery-item" onclick="openLightbox('prod-6.jpg')">
+         < img class="gallery-img" src="prod-6.jpg" alt="竞品6 MEDVICE">
+         <div class="gallery-desc">
+           <div class="gallery-title">MEDVICE</div>
+           <div class="gallery-sub">进口级低噪旗舰款</div>
+         </div>
+       </div>
+     </div>
+   </div>
+   <!-- 灯箱弹窗：点击卡片放大图片 -->
+   <div class="lightbox" id="lightbox">
+     <span class="lightbox-close" onclick="closeLightbox()">×</span>
+     < img id="lb-img" src="" alt="放大图片">
+   </div>
+ </div>
       <div class="sec-head" style="margin-bottom:0;">
         <div class="idx">02 / Market Research</div>
         <h2>市场调研看板</h2>
@@ -1411,5 +1467,22 @@ footer.site b{color:var(--txt-2);font-weight:600;}
   }
 })();
 </script>
+   <script>
+ // =========画廊灯箱JS========
+ function openLightbox(src){
+   const lb = document.getElementById('lightbox');
+   const lbImg = document.getElementById('lb-img');
+   lbImg.src = src;
+   lb.classList.add('show');
+ }
+ function closeLightbox(){
+   const lb = document.getElementById('lightbox');
+   lb.classList.remove('show');
+ }
+ //点击弹窗背景关闭
+ document.getElementById('lightbox').addEventListener('click',function(e){
+   if(e.target === this) closeLightbox();
+ })
+ </script>
 </body>
 </html>
