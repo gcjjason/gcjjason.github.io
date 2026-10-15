@@ -25,6 +25,13 @@
  .lightbox{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);z-index:9999;display:none;align-items:center;justify-content:center}
  .lightbox-close{position:absolute;top:20px;right:30px;color:#fff;font-size:40px;cursor:pointer}
  #lb-img{max-width:85%;max-height:85%}
+.gallery-item:nth-child(1) { transform: rotateY(0deg) translateZ(520px); }
+.gallery-item:nth-child(2) { transform: rotateY(51.4deg) translateZ(520px); }
+.gallery-item:nth-child(3) { transform: rotateY(102.8deg) translateZ(520px); }
+.gallery-item:nth-child(4) { transform: rotateY(154.2deg) translateZ(520px); }
+.gallery-item:nth-child(5) { transform: rotateY(205.6deg) translateZ(520px); }
+.gallery-item:nth-child(6) { transform: rotateY(257deg) translateZ(520px); }
+.gallery-item:nth-child(7) { transform: rotateY(308.4deg) translateZ(520px); }
 /* ============================================================
    Design tokens — unified dark theme
    ============================================================ */
@@ -997,8 +1004,8 @@ footer.site b{color:var(--txt-2);font-weight:600;}
      <h3>主流竞品产品实拍画廊</h3>
      <p>国内主流防褥疮气垫床竞品外观参考，鼠标悬浮圆环暂停旋转，点击卡片放大查看大图</p >
    </div>
-   <div class="carousel-scene">
-     <div class="carousel-ring">
+  <div class="carousel-scene">
+   <div class="carousel-ring">
        <!--卡片1-->
        <div class="gallery-item" onclick="openLightbox('prod1.jpeg')">
          < img class="gallery-img" src="prod1.jpeg" alt="竞品1 迈德斯特S36">
@@ -1055,8 +1062,8 @@ footer.site b{color:var(--txt-2);font-weight:600;}
            <div class="gallery-sub">高端智能护理气垫</div>
          </div>
        </div>
-     </div>
    </div>
+ </div>
    <!--放大弹窗 -->
    <div class="lightbox" id="lightbox">
      <span class="lightbox-close" onclick="closeLightbox()">×</span>
