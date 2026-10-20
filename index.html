@@ -4,7 +4,7 @@
 <link rel="icon" href="https://gcjjason.github.io/prod1.jpg" type="image/jpeg">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>防褥疮气垫床产品设计 · 研究展示</title>
+<title>防褥疮气垫床 · 产品设计研究与MCDM方法流</title>
 <style>
    .gallery-section{padding:40px 0;color:#fff}
  .gallery-header{text-align:center;margin-bottom:30px}
@@ -751,6 +751,288 @@ footer.site b{color:var(--txt-2);font-weight:600;}
   .rv{opacity:1;transform:none;}
 }
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px;}
+
+/* ===== MCDM 方法流专属样式 ===== */
+.flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:30px 0;}
+.flow-step{
+  background:linear-gradient(165deg,rgba(22,35,58,.82),rgba(14,23,39,.6));
+  border:1px solid var(--line);border-radius:var(--r);padding:22px;position:relative;
+  transition:transform .45s var(--ease),border-color .45s var(--ease);
+}
+.flow-step:hover{transform:translateY(-5px);border-color:rgba(77,163,255,.45);}
+.flow-step .step-num{
+  width:36px;height:36px;border-radius:50%;background:var(--grad);
+  display:grid;place-items:center;font-weight:800;font-size:15px;margin-bottom:12px;
+  box-shadow:0 6px 16px -4px rgba(77,163,255,.7);
+}
+.flow-step h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px;}
+.flow-step p{font-size:12.5px;color:var(--txt-2);line-height:1.7;}
+.flow-arrow{display:none;}
+
+.timeline{position:relative;padding-left:32px;margin-top:20px;}
+.timeline::before{
+  content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;
+  background:linear-gradient(180deg,rgba(77,163,255,.6),rgba(124,92,255,.6),rgba(53,224,208,.3));
+}
+.tl-item{position:relative;padding:0 0 28px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{
+  position:absolute;left:-32px;top:4px;width:24px;height:24px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--accent);display:grid;place-items:center;
+  font-size:11px;font-weight:800;color:var(--accent);z-index:2;
+}
+.tl-item.in .tl-dot{background:var(--accent);color:#fff;box-shadow:0 0 0 4px rgba(77,163,255,.18);}
+.tl-body{
+  background:linear-gradient(165deg,rgba(22,35,58,.72),rgba(14,23,39,.55));
+  border:1px solid var(--line);border-radius:var(--r);padding:18px 22px;
+}
+.tl-body h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+.tl-body h4 .tag{
+  font-size:10.5px;padding:2px 8px;border-radius:6px;font-weight:600;letter-spacing:.3px;
+}
+.tag-input{background:rgba(53,224,208,.12);color:#5fe8da;border:1px solid rgba(53,224,208,.25);}
+.tag-method{background:rgba(124,92,255,.14);color:#b29bff;border:1px solid rgba(124,92,255,.3);}
+.tag-output{background:rgba(0,185,107,.12);color:#4fe0a3;border:1px solid rgba(0,185,107,.28);}
+.tl-body p{font-size:13px;color:var(--txt-2);line-height:1.75;}
+.tl-body ul{margin-top:8px;padding-left:18px;}
+.tl-body li{font-size:12.5px;color:var(--txt-2);line-height:1.85;}
+.tl-body li b{color:#dfe9f7;font-weight:600;}
+
+.crit-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 24px;}
+.crit-tab{
+  padding:8px 16px;border-radius:999px;cursor:pointer;
+  background:rgba(120,160,220,.07);border:1px solid var(--line);
+  color:var(--txt-2);font-size:13px;font-weight:600;font-family:inherit;
+  transition:.3s var(--ease);
+}
+.crit-tab:hover{color:#fff;border-color:var(--line-2);background:rgba(120,160,220,.14);}
+.crit-tab.on{
+  color:#fff;background:rgba(77,163,255,.2);
+  border-color:rgba(77,163,255,.6);
+  box-shadow:0 0 0 3px rgba(77,163,255,.1);
+}
+.crit-panel{display:none;}
+.crit-panel.on{display:block;animation:fadeIn .45s var(--ease);}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+
+.crit-head{display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line);}
+.crit-icon{
+  width:48px;height:48px;border-radius:14px;display:grid;place-items:center;
+  background:var(--grad-soft);border:1px solid var(--line-2);font-size:22px;flex:none;
+}
+.crit-head h3{font-size:18px;font-weight:700;color:#fff;}
+.crit-head .crit-sub{font-size:12.5px;color:var(--txt-3);margin-top:2px;}
+.sub-crit-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.sub-crit{
+  background:rgba(120,160,220,.05);border:1px solid var(--line);
+  border-radius:10px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;
+  transition:.3s var(--ease);
+}
+.sub-crit:hover{background:rgba(120,160,220,.1);border-color:var(--line-2);}
+.sub-crit .code{
+  font-family:Consolas,monospace;font-size:11px;color:var(--accent);font-weight:700;
+  padding:2px 7px;border-radius:5px;background:rgba(77,163,255,.12);border:1px solid rgba(77,163,255,.22);flex:none;margin-top:2px;
+}
+.sub-crit .sc-name{font-size:13px;font-weight:600;color:#dfe9f7;margin-bottom:3px;}
+.sub-crit .sc-desc{font-size:11.5px;color:var(--txt-3);line-height:1.6;}
+
+/* Kano 需求分类环形图 */
+.kano-chart-wrap{display:flex;gap:32px;flex-wrap:wrap;align-items:center;justify-content:center;margin:30px 0;}
+.kano-donut{
+  width:200px;height:200px;border-radius:50%;position:relative;flex:none;
+  background:conic-gradient(
+    #ff4d4f 0% 17%,
+    #4da3ff 17% 50%,
+    #00b96b 50% 75%,
+    #ffb020 75% 92%,
+    #6d7f99 92% 100%
+  );
+  box-shadow:0 0 40px -10px rgba(77,163,255,.4);
+}
+.kano-donut::after{
+  content:"";position:absolute;inset:32px;border-radius:50%;
+  background:linear-gradient(165deg,#131f33,#0e1828);
+  box-shadow:inset 0 0 30px rgba(0,0,0,.6);
+}
+.kano-donut .ctr{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;z-index:2;
+}
+.kano-donut .ctr b{font-size:26px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.kano-donut .ctr span{font-size:11px;color:var(--txt-3);margin-top:2px;}
+.kano-legend{display:flex;flex-direction:column;gap:10px;font-size:13px;min-width:230px;}
+.kano-legend div{display:flex;align-items:center;}
+.kano-legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:10px;flex:none;}
+.kano-legend span:last-child{margin-left:auto;color:var(--txt);font-weight:600;font-size:13px;padding-left:10px;}
+.kano-legend small{display:block;color:var(--txt-3);font-size:11px;font-weight:400;}
+
+/* 问卷手风琴 */
+.accordion{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.acc-item{
+  background:linear-gradient(165deg,rgba(22,35,58,.72),rgba(14,23,39,.55));
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+}
+.acc-head{
+  padding:18px 22px;cursor:pointer;display:flex;align-items:center;gap:14px;
+  transition:background .3s var(--ease);
+}
+.acc-head:hover{background:rgba(120,160,220,.05);}
+.acc-head .acc-letter{
+  width:36px;height:36px;border-radius:10px;background:var(--grad-soft);
+  border:1px solid var(--line-2);display:grid;place-items:center;
+  font-weight:800;font-size:14px;color:var(--accent);flex:none;
+}
+.acc-head .acc-title{flex:1;}
+.acc-head .acc-title h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:2px;}
+.acc-head .acc-title p{font-size:12px;color:var(--txt-3);}
+.acc-head .acc-arrow{width:20px;height:20px;display:grid;place-items:center;color:var(--txt-3);transition:transform .3s var(--ease);font-size:18px;}
+.acc-item.open .acc-arrow{transform:rotate(180deg);color:var(--accent);}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .5s var(--ease);}
+.acc-item.open .acc-body{max-height:3000px;}
+.acc-inner{padding:0 22px 22px;border-top:1px solid var(--line);}
+.q-group{margin-top:16px;}
+.q-group-title{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:10px;letter-spacing:.3px;}
+.q-list{display:flex;flex-direction:column;gap:6px;}
+.q-item{
+  font-size:12.5px;color:var(--txt-2);padding:8px 12px;
+  background:rgba(120,160,220,.04);border-radius:8px;line-height:1.6;
+  display:flex;gap:10px;align-items:flex-start;
+}
+.q-item .q-num{color:var(--txt-3);font-family:Consolas,monospace;font-size:11px;padding-top:2px;flex:none;min-width:30px;}
+.q-item .q-scale{font-size:11px;color:var(--cyan);margin-left:auto;flex:none;background:rgba(53,224,208,.08);padding:2px 8px;border-radius:5px;white-space:nowrap;}
+.q-note{font-size:11.5px;color:var(--txt-3);font-style:italic;margin-top:10px;padding:10px 12px;background:rgba(255,176,32,.05);border-left:2px solid var(--warn);border-radius:4px;line-height:1.7;}
+
+/* 方法架构三层 */
+.method-layers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0;}
+.method-layer{
+  background:linear-gradient(165deg,rgba(22,35,58,.82),rgba(14,23,39,.6));
+  border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;position:relative;overflow:hidden;
+}
+.method-layer::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);
+}
+.method-layer.l2::before{background:linear-gradient(90deg,#7c5cff,#c56cff);}
+.method-layer.l3::before{background:linear-gradient(90deg,#35e0d0,#00b96b);}
+.method-layer .layer-label{
+  font-size:11px;letter-spacing:2.5px;color:var(--txt-3);text-transform:uppercase;margin-bottom:6px;
+}
+.method-layer h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:4px;}
+.method-layer .layer-desc{font-size:12px;color:var(--txt-2);margin-bottom:16px;line-height:1.7;}
+.method-block{
+  background:rgba(120,160,220,.05);border:1px solid var(--line);border-radius:10px;
+  padding:12px 14px;margin-bottom:8px;
+}
+.method-block b{font-size:12.5px;color:#dfe9f7;font-weight:700;display:block;margin-bottom:4px;}
+.method-block span{font-size:11.5px;color:var(--txt-3);line-height:1.6;}
+
+/* 数据流链 */
+.flow-chain{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;
+  margin:30px 0;padding:24px;background:linear-gradient(165deg,rgba(22,35,58,.6),rgba(14,23,39,.4));
+  border:1px solid var(--line);border-radius:var(--r-lg);
+}
+.chain-node{
+  padding:10px 16px;border-radius:10px;font-size:12px;font-weight:600;
+  background:rgba(77,163,255,.12);border:1px solid rgba(77,163,255,.3);color:#a9cdff;
+  white-space:nowrap;
+}
+.chain-arrow{color:var(--txt-3);font-size:16px;}
+
+/* 概念方案卡片 */
+.concept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
+.concept-card{
+  background:linear-gradient(165deg,rgba(22,35,58,.85),rgba(14,23,39,.65));
+  border:1px solid var(--line);border-radius:var(--r-lg);padding:26px;position:relative;overflow:hidden;
+  transition:transform .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease);
+}
+.concept-card::after{
+  content:"";position:absolute;inset:0;border-radius:var(--r-lg);
+  background:radial-gradient(60% 60% at 0% 0%,rgba(77,163,255,.14),transparent 70%);
+  opacity:0;transition:opacity .45s;pointer-events:none;
+}
+.concept-card:hover{transform:translateY(-8px);border-color:rgba(77,163,255,.45);box-shadow:var(--shadow-lg);}
+.concept-card:hover::after{opacity:1;}
+.concept-card .badge{
+  position:absolute;top:18px;right:18px;padding:4px 10px;border-radius:999px;
+  font-size:11px;font-weight:700;letter-spacing:.3px;
+}
+.badge-flag{background:rgba(255,77,79,.15);color:#ff8d8f;border:1px solid rgba(255,77,79,.3);}
+.badge-home{background:rgba(77,163,255,.15);color:#8bc4ff;border:1px solid rgba(77,163,255,.3);}
+.badge-port{background:rgba(0,185,107,.15);color:#4fe0a3;border:1px solid rgba(0,185,107,.3);}
+.concept-card .c-icon{font-size:34px;margin-bottom:12px;display:block;}
+.concept-card h3{font-size:18px;font-weight:700;color:#fff;margin-bottom:6px;}
+.concept-card .price{font-size:13px;color:var(--accent);font-weight:700;margin-bottom:12px;}
+.concept-card ul{list-style:none;padding:0;}
+.concept-card li{font-size:12.5px;color:var(--txt-2);padding:5px 0;line-height:1.65;padding-left:16px;position:relative;}
+.concept-card li::before{
+  content:"";position:absolute;left:0;top:12px;width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+}
+
+/* 甘特图 */
+.gantt{margin:30px 0;overflow-x:auto;padding-bottom:10px;}
+.gantt-header{display:grid;grid-template-columns:160px repeat(20,1fr);gap:1px;font-size:10.5px;color:var(--txt-3);margin-bottom:4px;}
+.gantt-header .g-label{text-align:right;padding-right:10px;color:var(--txt-2);font-weight:600;}
+.gantt-header .g-week{text-align:center;padding:4px 0;}
+.gantt-row{display:grid;grid-template-columns:160px repeat(20,1fr);gap:1px;align-items:center;margin-bottom:6px;}
+.gantt-row .gt-label{font-size:11.5px;color:var(--txt-2);text-align:right;padding-right:10px;font-weight:500;}
+.gantt-row .gt-cell{height:22px;position:relative;}
+.gantt-bar{
+  position:absolute;top:3px;bottom:3px;border-radius:6px;
+  display:flex;align-items:center;padding:0 8px;font-size:10px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;
+}
+.gb-1{background:linear-gradient(90deg,#4da3ff,#2159a8);}
+.gb-2{background:linear-gradient(90deg,#7c5cff,#4c37b8);}
+.gb-3{background:linear-gradient(90deg,#35e0d0,#0f7e75);}
+.gb-4{background:linear-gradient(90deg,#ffb020,#a8710a);}
+.gb-5{background:linear-gradient(90deg,#ff4d4f,#a02022);}
+.gb-6{background:linear-gradient(90deg,#00b96b,#006b3d);}
+.gb-7{background:linear-gradient(90deg,#c56cff,#7237a8);}
+.gb-8{background:linear-gradient(90deg,#ff8a5c,#c94f25);}
+.gb-9{background:linear-gradient(90deg,#5fe8da,#1d8a80);}
+
+/* 分隔 */
+.section-divider{
+  height:1px;margin:20px 0 60px;
+  background:linear-gradient(90deg,transparent,var(--line-2),transparent);
+  position:relative;
+}
+.section-divider::after{
+  content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:40px;height:40px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--line-2);
+  display:grid;place-items:center;
+}
+
+.deliver-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px;}
+.deliver-item{
+  background:rgba(120,160,220,.05);border:1px solid var(--line);border-radius:var(--r);
+  padding:16px 18px;display:flex;gap:12px;align-items:flex-start;
+}
+.deliver-item .d-ic{font-size:22px;flex:none;}
+.deliver-item b{font-size:13px;color:#dfe9f7;font-weight:700;display:block;margin-bottom:4px;}
+.deliver-item span{font-size:12px;color:var(--txt-3);line-height:1.65;}
+
+.qc-list{display:flex;flex-direction:column;gap:8px;margin-top:16px;}
+.qc-item{
+  display:flex;align-items:center;gap:12px;padding:10px 14px;
+  background:rgba(0,185,107,.05);border:1px solid rgba(0,185,107,.18);border-radius:10px;
+}
+.qc-item .qc-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);flex:none;box-shadow:0 0 8px var(--ok);}
+.qc-item span{font-size:12.5px;color:var(--txt-2);}
+
+@media(max-width:980px){
+  .flow-steps{grid-template-columns:repeat(2,1fr);}
+  .method-layers{grid-template-columns:1fr;}
+  .sub-crit-list{grid-template-columns:1fr;}
+  .concept-grid{grid-template-columns:1fr;}
+  .deliver-list{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .flow-steps{grid-template-columns:1fr;}
+  .kano-chart-wrap{flex-direction:column;align-items:center;}
+}
+
 </style>
 </head>
 <body>
@@ -773,6 +1055,11 @@ footer.site b{color:var(--txt-2);font-weight:600;}
       <li><a href="#literature">文献对照表</a></li>
       <li><a href="#market">市场调研</a></li>
       <li><a href="#design">设计启示</a></li>
+      <li><a href="#mcdm-overview">方法流</a></li>
+      <li><a href="#criteria">指标体系</a></li>
+      <li><a href="#questionnaire">问卷设计</a></li>
+      <li><a href="#ranking">方案排序</a></li>
+      <li><a href="#concept">概念输出</a></li>
     </ul>
   </div>
 </header>
@@ -1315,6 +1602,571 @@ footer.site b{color:var(--txt-2);font-weight:600;}
   </div>
 </section>
 
+<!-- ============ 分隔：研究依据 → 研究方法 ============ -->
+<div class="section-divider" style="margin-top:20px;"></div>
+
+<!-- ============ MCDM 方法流总览 ============ -->
+<section id="mcdm-overview" class="sec" style="padding-top:0;">
+  <div class="shell">
+    <div class="sec-head rv">
+      <div class="idx">04 / Methodology</div>
+      <h2>多准则决策 MCDM 方法流</h2>
+      <p>在文献与市场研究基础上，搭建一套从「指标构建→问卷调研→权重计算→方案排序→产品落地」的完整方法链，
+         用 AHP + 熵权 + Kano 主客观组合赋权，结合 Fuzzy-TOPSIS 与 VIKOR 交叉验证，最终通过 QFD 质量屋映射到工程特性，指导产品概念图设计。</p>
+    </div>
+
+    <div class="card rv">
+      <div style="text-align:center;margin-bottom:10px;">
+        <span style="font-size:11.5px;letter-spacing:3px;color:var(--txt-3);text-transform:uppercase;">Four-Stage Workflow</span>
+        <h3 style="font-size:20px;font-weight:800;color:#fff;margin-top:6px;">四阶段闭环 · 证据驱动的设计决策</h3>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step rv rv-d1">
+          <div class="step-num">1</div>
+          <h4>指标构建阶段</h4>
+          <p>文献编码 + 德尔菲专家咨询，提炼 C1–C7 七大准则 24 项子准则，形成初始评价体系。</p>
+        </div>
+        <div class="flow-step rv rv-d2">
+          <div class="step-num">2</div>
+          <h4>问卷调研阶段</h4>
+          <p>六模块问卷（A–H）覆盖人口学、Kano 双向、满意度、AHP 两两比较，分层抽样采集三类用户数据。</p>
+        </div>
+        <div class="flow-step rv rv-d3">
+          <div class="step-num">3</div>
+          <h4>决策计算阶段</h4>
+          <p>熵权（客观）+ AHP（主观）+ Kano（需求属性）综合赋权；Fuzzy-TOPSIS 主排序，VIKOR 交叉验证稳健性。</p>
+        </div>
+        <div class="flow-step rv rv-d4">
+          <div class="step-num">4</div>
+          <h4>概念输出阶段</h4>
+          <p>QFD 质量屋把用户需求权重映射为工程特性优先级，输出三套差异化产品概念图。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 阶段详细时间线 -->
+    <div class="sec-head rv" style="margin-top:50px;margin-bottom:20px;">
+      <div class="idx">Eight Phases</div>
+      <h2 style="font-size:22px;">八阶段详细工作流程</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item rv">
+        <div class="tl-dot">1</div>
+        <div class="tl-body">
+          <h4>文献编码与指标初筛 <span class="tag tag-input">输入</span></h4>
+          <p>对 10 篇中文临床/工程文献与 17 篇英文临床文献做开放编码、主轴编码、选择性编码三级扎根分析，抽取初始设计要素。</p>
+          <ul>
+            <li><b>方法：</b>扎根理论 + NVivo 编码</li>
+            <li><b>输出：</b>7 大准则、24 项子准则初始池</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item rv rv-d1">
+        <div class="tl-dot">2</div>
+        <div class="tl-body">
+          <h4>德尔菲专家咨询 <span class="tag tag-method">方法</span></h4>
+          <p>邀请 8–12 名专家（临床医师 3 / 康复护士 3 / 工业设计 2 / 医疗器械工程师 2）进行 2 轮函询，按"均值≥4 且变异系数&lt;0.25"筛选指标。</p>
+          <ul>
+            <li><b>方法：</b>德尔菲法 + Likert 5 级</li>
+            <li><b>输出：</b>经筛的正式评价指标体系（预计 20–24 项）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item rv rv-d2">
+        <div class="tl-dot">3</div>
+        <div class="tl-body">
+          <h4>问卷设计与预测试 <span class="tag tag-output">输出</span></h4>
+          <p>六模块问卷（A 人口学甄别 / D 重要性 / E 满意度 / B Kano 双向 / H 开放题 / C AHP 专家卷 / F 候选方案模糊评价）；预测试 n≥30 做信效度检验。</p>
+          <ul>
+            <li><b>校验指标：</b>Cronbach's α ≥ 0.7、KMO &gt; 0.7、Bartlett 球形检验显著</li>
+            <li><b>输出：</b>正式发放版问卷</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item rv rv-d3">
+        <div class="tl-dot">4</div>
+        <div class="tl-body">
+          <h4>分层抽样与数据采集 <span class="tag tag-input">输入</span></h4>
+          <p>按"医院病房 100 + 居家护理 100 + 养老机构 50"分层抽样，目标 n≥200，确保三类用户（患者/家属/护士）均衡覆盖。</p>
+          <ul>
+            <li><b>渠道：</b>南昌三甲医院康复科 + 社区居家护理中心 + 线上问卷星</li>
+            <li><b>质控：</b>答题时长 &lt; 120 秒判无效、反向题一致性校验</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item rv rv-d4">
+        <div class="tl-dot">5</div>
+        <div class="tl-body">
+          <h4>组合权重计算 <span class="tag tag-method">方法</span></h4>
+          <p>三种权重融合：AHP 主观权重（专家判断矩阵）+ 熵权客观权重（样本离散度）+ Kano 调整系数（M/O/A/I/R 分类），最终权重 W = α·W<sub>AHP</sub> + β·W<sub>Entropy</sub>，并用 Kano 系数 k 对用户满意度进行非线性调整。</p>
+          <ul>
+            <li><b>一致性：</b>AHP 矩阵 CR &lt; 0.1 方为有效</li>
+            <li><b>输出：</b>24 项子准则最终权重</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item rv rv-d5">
+        <div class="tl-dot">6</div>
+        <div class="tl-body">
+          <h4>候选方案排序 <span class="tag tag-method">方法</span></h4>
+          <p>对 4 套候选方案（喷气式/交替式/翻身式/便携蓄电式）进行模糊语言评价，映射为三角模糊数，用 Fuzzy-TOPSIS 计算相对贴近度 C<sub>i</sub> 做为主排序，再以 VIKOR 计算 Q<sub>i</sub> 做交叉验证，避免单一方法偏倚。</p>
+          <ul>
+            <li><b>稳健性：</b>两种方法 Top-1 一致即接受；不一致则做敏感性分析</li>
+            <li><b>输出：</b>方案排序表 + 敏感性分析图</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">7</div>
+        <div class="tl-body">
+          <h4>QFD 质量屋映射 <span class="tag tag-method">方法</span></h4>
+          <p>将用户需求（WHATs）×最终权重，映射到工程特性（HOWs：噪音值/气囊交替周期/翻身角度/面料透气率/续航时长/价格等），通过相关矩阵与自相关矩阵计算工程特性绝对权重。</p>
+          <ul>
+            <li><b>相关强度：</b>◎=9 强相关 / ○=3 中相关 / △=1 弱相关</li>
+            <li><b>输出：</b>QFD 质量屋 + 工程特性优先级排序</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">8</div>
+        <div class="tl-body">
+          <h4>产品概念图输出 <span class="tag tag-output">输出</span></h4>
+          <p>基于工程特性优先级，输出 3 套差异化产品概念图（旗舰智能型/居家经济型/便携转运型），每套包含外观效果图、功能爆炸图、关键交互界面。</p>
+          <ul>
+            <li><b>交付：</b>概念图板 + 设计说明文档</li>
+            <li><b>验证：</b>概念图回到目标用户群做简易 SUS 可用性测试</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 指标体系 C1–C7 ============ -->
+<section id="criteria" class="sec" style="padding-top:0;">
+  <div class="shell">
+    <div class="sec-head rv">
+      <div class="idx">05 / Criteria System</div>
+      <h2>七大评价准则 · 24 项子准则</h2>
+      <p>所有指标均源自临床文献与工程文献编码，保持与你既有方案编号一致（C1–C7），保证问卷数据可直接回灌计算模板。点击下方标签查看各准则详情。</p>
+    </div>
+
+    <div class="crit-tabs rv">
+      <button class="crit-tab on" data-c="c1">C1 减压疗效</button>
+      <button class="crit-tab" data-c="c2">C2 智能交互</button>
+      <button class="crit-tab" data-c="c3">C3 安全性</button>
+      <button class="crit-tab" data-c="c4">C4 便携续航</button>
+      <button class="crit-tab" data-c="c5">C5 舒适性</button>
+      <button class="crit-tab" data-c="c6">C6 经济性</button>
+      <button class="crit-tab" data-c="c7">C7 护理减负</button>
+    </div>
+
+    <div class="card rv rv-d1">
+      <!-- C1 -->
+      <div class="crit-panel on" data-p="c1">
+        <div class="crit-head">
+          <div class="crit-icon">🩺</div>
+          <div>
+            <h3>C1 减压与防褥疮疗效</h3>
+            <div class="crit-sub">来源：动态交替式/喷气式临床对照、电动翻身气垫床、LT200 临床观察等文献</div>
+          </div>
+        </div>
+        <div class="sub-crit-list">
+          <div class="sub-crit"><span class="code">C1.1</span><div><div class="sc-name">骨突处压力分散</div><div class="sc-desc">有效分散骶尾、足跟等骨突部位界面压力</div></div></div>
+          <div class="sub-crit"><span class="code">C1.2</span><div><div class="sc-name">交替/翻身周期可调</div><div class="sc-desc">可调节的交替充气与翻身周期（10–20 分钟）</div></div></div>
+          <div class="sub-crit"><span class="code">C1.3</span><div><div class="sc-name">压疮发生率降低</div><div class="sc-desc">显著降低压疮与受压红斑发生率</div></div></div>
+          <div class="sub-crit"><span class="code">C1.4</span><div><div class="sc-name">皮肤恢复与 Braden 改善</div><div class="sc-desc">受压皮肤恢复更快、Braden 评分提升</div></div></div>
+        </div>
+      </div>
+      <!-- C2 -->
+      <div class="crit-panel" data-p="c2">
+        <div class="crit-head">
+          <div class="crit-icon">🧠</div>
+          <div>
+            <h3>C2 智能与交互功能</h3>
+            <div class="crit-sub">来源：AT89S52 智能翻身、CAN 总线嵌入式控制、便携报警充气泵等工程文献</div>
+          </div>
+        </div>
+        <div class="sub-crit-list">
+          <div class="sub-crit"><span class="code">C2.1</span><div><div class="sc-name">多种自动翻身模式</div><div class="sc-desc">左翻/右翻/连续/定压等多模式切换</div></div></div>
+          <div class="sub-crit"><span class="code">C2.2</span><div><div class="sc-name">便捷控制方式</div><div class="sc-desc">按键/遥控/声控/触屏多种操作入口</div></div></div>
+          <div class="sub-crit"><span class="code">C2.3</span><div><div class="sc-name">压力监测与异常报警</div><div class="sc-desc">实时压力监测、过压/低压可视化报警</div></div></div>
+          <div class="sub-crit"><span class="code">C2.4</span><div><div class="sc-name">模块化可扩展</div><div class="sc-desc">硬件/软件模块化，支持功能升级扩展</div></div></div>
+        </div>
+      </div>
+      <!-- C3 -->
+      <div class="crit-panel" data-p="c3">
+        <div class="crit-head">
+          <div class="crit-icon">🛡️</div>
+          <div>
+            <h3>C3 安全性</h3>
+            <div class="crit-sub">来源：IEC 60601-1 医用电气安全、MHRA 防夹陷指南、医疗器械相关压疮研究</div>
+          </div>
+        </div>
+        <div class="sub-crit-list">
+          <div class="sub-crit"><span class="code">C3.1</span><div><div class="sc-name">异常报警系统</div><div class="sc-desc">过压/漏气/断电等异常即时声光报警</div></div></div>
+          <div class="sub-crit"><span class="code">C3.2</span><div><div class="sc-name">翻身防侧滑</div><div class="sc-desc">翻身角度可控、床面防侧滑防坠床结构</div></div></div>
+          <div class="sub-crit"><span class="code">C3.3</span><div><div class="sc-name">抗菌防水亲肤面料</div><div class="sc-desc">床罩医用级、抗菌、防水、高生物相容性</div></div></div>
+          <div class="sub-crit"><span class="code">C3.4</span><div><div class="sc-name">电气与气路安全</div><div class="sc-desc">符合 IEC 60601-1，防触电、防漏气</div></div></div>
+        </div>
+      </div>
+      <!-- C4 -->
+      <div class="crit-panel" data-p="c4">
+        <div class="crit-head">
+          <div class="crit-icon">🔋</div>
+          <div>
+            <h3>C4 便携性与续航</h3>
+            <div class="crit-sub">来源：20×10×6cm 小气泵、5000mAh 蓄电续航、压缩空气多气源适配等工程文献</div>
+          </div>
+        </div>
+        <div class="sub-crit-list">
+          <div class="sub-crit"><span class="code">C4.1</span><div><div class="sc-name">整机轻便易搬运</div><div class="sc-desc">气泵轻量化、床垫可折叠、便于院间转运</div></div></div>
+          <div class="sub-crit"><span class="code">C4.2</span><div><div class="sc-name">断电蓄电续航</div><div class="sc-desc">内置备用电池，断电续航 ≥ 30 分钟</div></div></div>
+          <div class="sub-crit"><span class="code">C4.3</span><div><div class="sc-name">多气源适配</div><div class="sc-desc">市电/电池/医用压缩空气多气源兼容</div></div></div>
+        </div>
+      </div>
+      <!-- C5 -->
+      <div class="crit-panel" data-p="c5">
+        <div class="crit-head">
+          <div class="crit-icon">😴</div>
+          <div>
+            <h3>C5 舒适性</h3>
+            <div class="crit-sub">来源：ICU 噪音研究、PCI 术后腰背疼痛与睡眠、人机工程学床垫设计</div>
+          </div>
+        </div>
+        <div class="sub-crit-list">
+          <div class="sub-crit"><span class="code">C5.1</span><div><div class="sc-name">低噪音运行</div><div class="sc-desc">气泵夜间运行 ≤ 30 dB，不干扰睡眠</div></div></div>
+          <div class="sub-crit"><span class="code">C5.2</span><div><div class="sc-name">床面微环境舒适</div><div class="sc-desc">透气干爽、温湿度适宜、微孔喷气去湿</div></div></div>
+          <div class="sub-crit"><span class="code">C5.3</span><div><div class="sc-name">缓解腰背疼痛</div><div class="sc-desc">分区支撑贴合脊柱曲线，改善睡眠质量</div></div></div>
+        </div>
+      </div>
+      <!-- C6 -->
+      <div class="crit-panel" data-p="c6">
+        <div class="crit-head">
+          <div class="crit-icon">💰</div>
+          <div>
+            <h3>C6 经济性</h3>
+            <div class="crit-sub">来源：防褥疮支撑面成本效益研究、静态与交替床垫成本对比、护理费用文献</div>
+          </div>
+        </div>
+        <div class="sub-crit-list">
+          <div class="sub-crit"><span class="code">C6.1</span><div><div class="sc-name">购置性价比</div><div class="sc-desc">价格合理，300–600 元主流区间可负担</div></div></div>
+          <div class="sub-crit"><span class="code">C6.2</span><div><div class="sc-name">维护成本低</div><div class="sc-desc">气囊独立可换、面料耐磨、故障率低</div></div></div>
+          <div class="sub-crit"><span class="code">C6.3</span><div><div class="sc-name">节省护理人力</div><div class="sc-desc">自动翻身显著降低护工/家属照护工时</div></div></div>
+        </div>
+      </div>
+      <!-- C7 -->
+      <div class="crit-panel" data-p="c7">
+        <div class="crit-head">
+          <div class="crit-icon">👨‍⚕️</div>
+          <div>
+            <h3>C7 护理减负</h3>
+            <div class="crit-sub">来源：单人 4 步翻身法研究、翻身气垫床优化设计、人机工程护理操作研究</div>
+          </div>
+        </div>
+        <div class="sub-crit-list">
+          <div class="sub-crit"><span class="code">C7.1</span><div><div class="sc-name">单人可操作</div><div class="sc-desc">单人即可完成翻身/体位变换操作</div></div></div>
+          <div class="sub-crit"><span class="code">C7.2</span><div><div class="sc-name">翻身耗时短</div><div class="sc-desc">单次翻身/转移操作 ≤ 2 分钟</div></div></div>
+          <div class="sub-crit"><span class="code">C7.3</span><div><div class="sc-name">界面易上手</div><div class="sc-desc">操作界面直观简单，老人/家属零学习成本</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kano 需求分布环形图 -->
+    <div class="card rv rv-d2" style="margin-top:24px;">
+      <div style="text-align:center;margin-bottom:8px;">
+        <h3 style="font-size:18px;font-weight:700;color:#fff;">Kano 需求类型分布（24 项子准则预设）</h3>
+        <p style="font-size:13px;color:var(--txt-3);margin-top:6px;">基于文献推导的先验分类，待调研数据回收后以实际统计值替换</p>
+      </div>
+      <div class="kano-chart-wrap">
+        <div class="kano-donut">
+          <div class="ctr"><b>24</b><span>子准则</span></div>
+        </div>
+        <div class="kano-legend">
+          <div><i style="background:#ff4d4f;"></i><div><b style="color:#fff;">M 必备型</b>（Must-be）<small>没有就极度不满，有了是应该的</small></div><span>4 项 · 17%</span></div>
+          <div><i style="background:#4da3ff;"></i><div><b style="color:#fff;">O 期望型</b>（One-dimensional）<small>做得越好满意度越高，线性相关</small></div><span>8 项 · 33%</span></div>
+          <div><i style="background:#00b96b;"></i><div><b style="color:#fff;">A 魅力型</b>（Attractive）<small>没有不影响，有了超出预期</small></div><span>6 项 · 25%</span></div>
+          <div><i style="background:#ffb020;"></i><div><b style="color:#fff;">I 无差异型</b>（Indifferent）<small>用户不在乎好坏</small></div><span>4 项 · 17%</span></div>
+          <div><i style="background:#6d7f99;"></i><div><b style="color:#fff;">R 反向型</b>（Reverse）<small>有了反而不满</small></div><span>2 项 · 8%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 问卷设计 ============ -->
+<section id="questionnaire" class="sec" style="padding-top:0;">
+  <div class="shell">
+    <div class="sec-head rv">
+      <div class="idx">06 / Questionnaire</div>
+      <h2>问卷设计 · 六大模块</h2>
+      <p>问卷结构与 MCDM 方法严格对齐：A/D/E 模块服务于熵权与描述统计，B 模块服务于 Kano 分类，C 模块服务于 AHP 主观权重，F 模块服务于 Fuzzy-TOPSIS 排序，H 模块捕捉隐性需求。点击展开各模块查看题项明细。</p>
+    </div>
+
+    <div class="accordion rv">
+      <!-- A -->
+      <div class="acc-item">
+        <div class="acc-head"><div class="acc-letter">A</div>
+          <div class="acc-title"><h4>甄别与人口学信息</h4><p>12 题 · 单选/多选 · 用于样本分层与筛选</p></div>
+          <div class="acc-arrow">▾</div>
+        </div>
+        <div class="acc-body"><div class="acc-inner">
+          <div class="q-note">Q1 身份 / Q2 年龄 / Q3 学历 / Q4 照护年限 / Q5 使用场景 / Q6 卧床时长 / Q7 卧床原因 / Q8 体重 / Q9 Braden 评分 / Q10 是否用过气垫床 / Q11 翻身频率 / Q12 是否发生过压疮。</div>
+        </div></div>
+      </div>
+      <!-- D+E -->
+      <div class="acc-item">
+        <div class="acc-head"><div class="acc-letter" style="background:linear-gradient(135deg,rgba(124,92,255,.14),rgba(77,163,255,.14));color:#b29bff;border-color:rgba(124,92,255,.3);">D+E</div>
+          <div class="acc-title"><h4>需求重要性 + 满意度双列评分</h4><p>24 项子准则 × 2 列 · Likert 5 级 · 用于熵权客观权重 + IPA 分析</p></div>
+          <div class="acc-arrow">▾</div>
+        </div>
+        <div class="acc-body"><div class="acc-inner">
+          <div class="q-note">对每个子准则同时打"重要性"（1 非常不重要 → 5 非常重要）与"满意度"（1 很不满意 → 5 非常满意）两个分数。24 项按 C1–C7 顺序排列，每准则前带准则小标题，便于受访者理解。</div>
+        </div></div>
+      </div>
+      <!-- B -->
+      <div class="acc-item">
+        <div class="acc-head"><div class="acc-letter" style="background:rgba(0,185,107,.1);color:#4fe0a3;border-color:rgba(0,185,107,.28);">B</div>
+          <div class="acc-title"><h4>Kano 双向功能提问</h4><p>24 项 × 2 问 = 48 题 · Kano 5 级 · 用于需求分类 + Better/Worse 指数</p></div>
+          <div class="acc-arrow">▾</div>
+        </div>
+        <div class="acc-body"><div class="acc-inner">
+          <div class="q-note">每题成对呈现：①"如果产品【具备】该功能，您感觉？" ②"如果产品【不具备】该功能，您感觉？"
+            <br>选项：A 喜欢 / B 理应如此 / C 无所谓 / D 勉强接受 / E 不喜欢。按 Kano 评价表交叉判定 M/O/A/I/R/Q。</div>
+        </div></div>
+      </div>
+      <!-- H -->
+      <div class="acc-item">
+        <div class="acc-head"><div class="acc-letter" style="background:rgba(255,176,32,.1);color:#ffc95c;border-color:rgba(255,176,32,.3);">H</div>
+          <div class="acc-title"><h4>开放性问题</h4><p>2 题 · 自由作答 · 捕捉问卷未覆盖的隐性需求</p></div>
+          <div class="acc-arrow">▾</div>
+        </div>
+        <div class="acc-body"><div class="acc-inner">
+          <div class="q-note">Q25 您最希望防褥疮气垫床增加或改进的一项功能是什么？<br>Q26 在使用现有产品（或人工翻身）过程中，最大的困扰是什么？</div>
+        </div></div>
+      </div>
+      <!-- C 专家卷 -->
+      <div class="acc-item">
+        <div class="acc-head"><div class="acc-letter" style="background:rgba(255,77,79,.1);color:#ff8d8f;border-color:rgba(255,77,79,.3);">C</div>
+          <div class="acc-title"><h4>AHP 专家两两比较（仅专家填写）</h4><p>准则层 21 组 + 子准则层比较 · 1–9 标度 · 用于 AHP 主观权重</p></div>
+          <div class="acc-arrow">▾</div>
+        </div>
+        <div class="acc-body"><div class="acc-inner">
+          <div class="q-note">面向 8–12 名专家发放。准则层 C1–C7 做两两比较共 C(7,2)=21 组，1–9 标度（1=同等、3=稍重要、5=明显、7=强烈、9=极端）。子准则层每个准则内部再做两两比较。所有判断矩阵需通过一致性检验（CR &lt; 0.1）。</div>
+        </div></div>
+      </div>
+      <!-- F 专家卷 -->
+      <div class="acc-item">
+        <div class="acc-head"><div class="acc-letter" style="background:rgba(53,224,208,.1);color:#5fe8da;border-color:rgba(53,224,208,.28);">F</div>
+          <div class="acc-title"><h4>候选方案模糊评价（仅专家/医护填写）</h4><p>4 方案 × 7 准则 · 语言评价 · 用于 Fuzzy-TOPSIS 排序</p></div>
+          <div class="acc-arrow">▾</div>
+        </div>
+        <div class="acc-body"><div class="acc-inner">
+          <div class="q-note">对甲（喷气式基础款）/ 乙（动态交替式）/ 丙（电动翻身式）/ 丁（便携蓄电报警式）4 个候选方案，在 C1–C7 上按"差/较差/中/良/优"5 级语言量表打分，映射为三角模糊数后进入 Fuzzy-TOPSIS 计算。</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="warnbox neutral rv" style="margin-top:22px;">
+      <b>抽样建议：</b>预测试 ≥30 份检验信效度；正式发放 ≥200 份（医院 100 + 家庭 100）；专家卷 8–12 份。建议通过问卷星 + 纸质线下结合发放。
+    </div>
+  </div>
+</section>
+
+<!-- ============ MCDM 计算与方案排序 ============ -->
+<section id="ranking" class="sec" style="padding-top:0;">
+  <div class="shell">
+    <div class="sec-head rv">
+      <div class="idx">07 / MCDM Computing</div>
+      <h2>三层方法架构 · 数据流转链</h2>
+      <p>从"权重确定"到"方案排序"再到"工程映射"，每一层的输入输出清晰可追溯，避免黑箱决策。</p>
+    </div>
+
+    <div class="method-layers rv">
+      <div class="method-layer">
+        <div class="layer-label">Layer Ⅰ · 权重层</div>
+        <h3>组合赋权</h3>
+        <div class="layer-desc">主客观结合 + Kano 调整，避免单一方法偏差。</div>
+        <div class="method-block"><b>AHP 层次分析法</b><span>专家 1–9 标度两两比较 → 主观权重 W<sub>AHP</sub>（CR &lt; 0.1）</span></div>
+        <div class="method-block"><b>熵权法 Entropy</b><span>基于问卷重要性评分的信息离散度 → 客观权重 W<sub>Ent</sub></span></div>
+        <div class="method-block"><b>Kano 调整系数 k</b><span>M=4 / O=2 / A=3 / I=0 / R 剔除；做非线性满意度放大</span></div>
+      </div>
+      <div class="method-layer l2">
+        <div class="layer-label">Layer Ⅱ · 排序层</div>
+        <h3>方案综合评价</h3>
+        <div class="layer-desc">模糊集处理语言评价不确定性；双方法交叉验证稳健性。</div>
+        <div class="method-block"><b>Fuzzy-TOPSIS</b><span>三角模糊数决策矩阵 → 加权规范化 → 相对贴近度 C<sub>i</sub>（主排序）</span></div>
+        <div class="method-block"><b>VIKOR 交叉验证</b><span>最大化群体效益、最小化遗憾 → Q<sub>i</sub> 折衷排序</span></div>
+        <div class="method-block"><b>敏感性分析</b><span>权重扰动 ±10% 观察排序稳定性</span></div>
+      </div>
+      <div class="method-layer l3">
+        <div class="layer-label">Layer Ⅲ · 映射层</div>
+        <h3>工程特性落地</h3>
+        <div class="layer-desc">把"用户语言"翻译成"工程师语言"，直接驱动设计。</div>
+        <div class="method-block"><b>QFD 质量屋</b><span>WHATs × HOWs 相关矩阵 → 工程特性绝对权重排序</span></div>
+        <div class="method-block"><b>IPA 重要-绩效分析</b><span>四象限定位优先改进区（高重要-低满意）</span></div>
+        <div class="method-block"><b>Better/Worse 系数</b><span>识别魅力型属性作为差异化亮点</span></div>
+      </div>
+    </div>
+
+    <!-- 数据流转链 -->
+    <div class="card rv rv-d1">
+      <h3 style="font-size:16px;font-weight:700;color:#fff;text-align:center;margin-bottom:6px;">数据流转链 · 从问卷到概念图</h3>
+      <p style="font-size:12.5px;color:var(--txt-3);text-align:center;margin-bottom:14px;">每一步的输出即下一步的输入，全链路可复现</p>
+      <div class="flow-chain">
+        <span class="chain-node">📋 问卷原始数据</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node">📊 信效度检验</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node">⚖️ AHP+熵权+Kano</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node">🎯 综合权重 W</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node">📐 Fuzzy-TOPSIS+VIKOR</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node">🏆 方案排序</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node">🏠 QFD 质量屋</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node">🎨 产品概念图</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 概念输出与路线图 ============ -->
+<section id="concept" class="sec" style="padding-top:0;">
+  <div class="shell">
+    <div class="sec-head rv">
+      <div class="idx">08 / Concept Output</div>
+      <h2>三套产品概念方案 · 20 周实施路线</h2>
+      <p>基于市场空白分析与 MCDM 方法预判，输出三款差异化概念，覆盖"医院旗舰、家庭普及、转运便携"三个核心场景。</p>
+    </div>
+
+    <div class="concept-grid rv">
+      <div class="concept-card rv-d1">
+        <span class="badge badge-flag">旗舰医院型</span>
+        <span class="c-icon">🏥</span>
+        <h3>智能静音旗舰款</h3>
+        <div class="price">预估售价 ¥1200–1500</div>
+        <ul>
+          <li>三管交替 + 微孔喷气（&lt;25 dB 静音）</li>
+          <li>实时压力映射可视化 + 自动调压闭环</li>
+          <li>电动左右翻身（0–30° 可调）+ CPR 快放</li>
+          <li>物联网远程数据同步至护士站</li>
+          <li>抗菌防水可拆洗床罩</li>
+        </ul>
+      </div>
+      <div class="concept-card rv-d2">
+        <span class="badge badge-home">居家经济款</span>
+        <span class="c-icon">🏠</span>
+        <h3>静音普及款</h3>
+        <div class="price">预估售价 ¥400–600</div>
+        <ul>
+          <li>双芯静音气泵（&lt;30 dB）+ 条形交替</li>
+          <li>一键式极简操作 + 大按键遥控</li>
+          <li>过压/漏气/断电声光报警</li>
+          <li>内置备电 30 分钟，断电不塌</li>
+          <li>亲肤抗菌面料，家用易清洁</li>
+        </ul>
+      </div>
+      <div class="concept-card rv-d3">
+        <span class="badge badge-port">便携转运款</span>
+        <span class="c-icon">🚑</span>
+        <h3>便携转运蓄电款</h3>
+        <div class="price">预估售价 ¥700–900</div>
+        <ul>
+          <li>超轻折叠（整机 &lt;3 kg）+ 便携提手</li>
+          <li>5000mAh 蓄电 ≥ 2 小时续航</li>
+          <li>多气源适配（车载/充电宝/医用压缩空气）</li>
+          <li>集成压力报警，转运途中实时监测</li>
+          <li>适用于急救转运、基层巡诊、家庭外出</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 甘特图 -->
+    <div class="card rv rv-d1" style="margin-top:32px;">
+      <h3 style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;">20 周实施路线图</h3>
+      <p style="font-size:12.5px;color:var(--txt-3);margin-bottom:16px;">从文献分析到概念输出约 5 个月，问卷发放与 MCDM 计算是核心环节。</p>
+      <div class="gantt">
+        <div class="gantt-header">
+          <div class="g-label">阶段</div>
+          <div class="g-week">W1</div><div class="g-week">W2</div><div class="g-week">W3</div><div class="g-week">W4</div>
+          <div class="g-week">W5</div><div class="g-week">W6</div><div class="g-week">W7</div><div class="g-week">W8</div>
+          <div class="g-week">W9</div><div class="g-week">W10</div><div class="g-week">W11</div><div class="g-week">W12</div>
+          <div class="g-week">W13</div><div class="g-week">W14</div><div class="g-week">W15</div><div class="g-week">W16</div>
+          <div class="g-week">W17</div><div class="g-week">W18</div><div class="g-week">W19</div><div class="g-week">W20</div>
+        </div>
+        <div class="gantt-row">
+          <div class="gt-label">文献编码</div>
+          <div class="gt-cell" style="grid-column:2/4;"><div class="gantt-bar gb-1" style="left:0;right:0;">W1–W2</div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gt-label">德尔菲咨询</div>
+          <div class="gt-cell" style="grid-column:4/7;"><div class="gantt-bar gb-2" style="left:0;right:0;">W3–W5</div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gt-label">问卷设计</div>
+          <div class="gt-cell" style="grid-column:6/8;"><div class="gantt-bar gb-3" style="left:0;right:0;">W5–W6</div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gt-label">预测试</div>
+          <div class="gt-cell" style="grid-column:8/10;"><div class="gantt-bar gb-4" style="left:0;right:0;">W7–W8</div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gt-label">正式调研</div>
+          <div class="gt-cell" style="grid-column:10/14;"><div class="gantt-bar gb-5" style="left:0;right:0;">W9–W12</div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gt-label">数据清洗+权重</div>
+          <div class="gt-cell" style="grid-column:14/16;"><div class="gantt-bar gb-6" style="left:0;right:0;">W13–W14</div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gt-label">TOPSIS+VIKOR</div>
+          <div class="gt-cell" style="grid-column:16/18;"><div class="gantt-bar gb-7" style="left:0;right:0;">W15–W16</div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gt-label">QFD质量屋</div>
+          <div class="gt-cell" style="grid-column:18/20;"><div class="gantt-bar gb-8" style="left:0;right:0;">W17–W18</div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gt-label">概念图输出</div>
+          <div class="gt-cell" style="grid-column:20/22;"><div class="gantt-bar gb-9" style="left:0;right:0;">W19–W20</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 交付物 + 质控 -->
+    <div class="grid g2 rv rv-d2" style="margin-top:28px;">
+      <div class="panel">
+        <h2>最终交付成果</h2>
+        <div class="desc">研究过程中同步产出的全部产物</div>
+        <div class="deliver-list">
+          <div class="deliver-item"><span class="d-ic">📑</span><div><b>文献编码手册</b><span>三级编码结果 + 指标来源对照表</span></div></div>
+          <div class="deliver-item"><span class="d-ic">📋</span><div><b>正式调研问卷</b><span>六模块可发放版（患者卷+专家卷）</span></div></div>
+          <div class="deliver-item"><span class="d-ic">📊</span><div><b>MCDM 计算模板</b><span>Excel 模板：AHP/熵权/TOPSIS/VIKOR 自动计算</span></div></div>
+          <div class="deliver-item"><span class="d-ic">🏠</span><div><b>QFD 质量屋</b><span>用户需求→工程特性映射图</span></div></div>
+          <div class="deliver-item"><span class="d-ic">🎨</span><div><b>三套概念图板</b><span>外观效果图+爆炸图+关键交互界面</span></div></div>
+          <div class="deliver-item"><span class="d-ic">📝</span><div><b>研究报告</b><span>完整论文/报告，含方法、结果、结论</span></div></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>关键质量控制点</h2>
+        <div class="desc">每一步必须达到的量化标准</div>
+        <div class="qc-list">
+          <div class="qc-item"><span class="qc-dot"></span><span>问卷 Cronbach's α ≥ 0.7，KMO &gt; 0.7</span></div>
+          <div class="qc-item"><span class="qc-dot"></span><span>AHP 判断矩阵一致性比率 CR &lt; 0.1</span></div>
+          <div class="qc-item"><span class="qc-dot"></span><span>德尔菲专家积极系数 ≥ 80%，权威系数 ≥ 0.7</span></div>
+          <div class="qc-item"><span class="qc-dot"></span><span>TOPSIS 与 VIKOR Top-1 方案一致或经敏感性验证</span></div>
+          <div class="qc-item"><span class="qc-dot"></span><span>有效问卷回收率 ≥ 85%，样本量 n ≥ 200</span></div>
+          <div class="qc-item"><span class="qc-dot"></span><span>概念图 SUS 可用性评分 ≥ 70</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 </div><!-- /.layer -->
 
 <button id="top-btn" aria-label="返回顶部">↑</button>
@@ -1545,6 +2397,100 @@ function openLightbox(src){
    }
    lb.querySelector('img').src = src;
  }
+
+/* ========== MCDM 专属交互 ========== */
+(function(){
+  "use strict";
+  /* 准则 Tab 切换 */
+  var tabs = document.querySelectorAll(".crit-tab");
+  var panels = document.querySelectorAll(".crit-panel");
+  tabs.forEach(function(t){
+    t.addEventListener("click", function(){
+      var c = t.getAttribute("data-c");
+      tabs.forEach(function(x){x.classList.remove("on");});
+      panels.forEach(function(p){p.classList.remove("on");});
+      t.classList.add("on");
+      var target = document.querySelector('.crit-panel[data-p="'+c+'"]');
+      if(target) target.classList.add("on");
+    });
+  });
+
+  /* 手风琴 */
+  document.querySelectorAll(".acc-head").forEach(function(h){
+    h.addEventListener("click", function(){
+      var item = h.parentElement;
+      var wasOpen = item.classList.contains("open");
+      // 关闭其它
+      document.querySelectorAll(".acc-item.open").forEach(function(x){
+        if(x !== item) x.classList.remove("open");
+      });
+      item.classList.toggle("open", !wasOpen);
+    });
+  });
+
+  /* 导航项展开 */
+  var navToggle = document.getElementById("navToggle");
+  var navMenu = document.getElementById("navMenu");
+  if(navToggle && navMenu){
+    navToggle.addEventListener("click", function(){
+      navMenu.classList.toggle("open");
+    });
+    navMenu.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", function(){ navMenu.classList.remove("open"); });
+    });
+  }
+
+  /* 滚动 spy 更新 active */
+  var sections = ["home","literature","market","design","mcdm-overview","criteria","questionnaire","ranking","concept"];
+  var navLinks = {};
+  document.querySelectorAll(".nav-menu a").forEach(function(a){
+    var href = a.getAttribute("href");
+    if(href && href.charAt(0)==="#") navLinks[href.slice(1)] = a;
+  });
+  function updateActive(){
+    var y = window.scrollY + 120;
+    var current = "home";
+    sections.forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && el.offsetTop <= y) current = id;
+    });
+    Object.keys(navLinks).forEach(function(k){ navLinks[k].classList.remove("active"); });
+    if(navLinks[current]) navLinks[current].classList.add("active");
+  }
+  window.addEventListener("scroll", updateActive, {passive:true});
+  updateActive();
+})();
+
+/* =========画廊灯箱JS（修正版，使用DOM构造）======== */
+function openLightbox(src){
+  var lb = document.getElementById('mcdm-lightbox');
+  if(!lb){
+    lb = document.createElement('div');
+    lb.id = 'mcdm-lightbox';
+    lb.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.88);display:flex;align-items:center;justify-content:center;z-index:9999;";
+    lb.onclick = function(e){ if(e.target === this) lb.remove(); };
+    var close = document.createElement('span');
+    close.innerHTML = "×";
+    close.style.cssText = "position:absolute;top:20px;right:30px;color:#fff;font-size:40px;cursor:pointer;z-index:1;";
+    close.onclick = function(){ lb.remove(); };
+    var img = document.createElement('img');
+    img.id = 'lb-img-real';
+    img.style.cssText = "max-width:85%;max-height:85%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.6);";
+    lb.appendChild(close);
+    lb.appendChild(img);
+    document.body.appendChild(lb);
+  }
+  var imgEl = lb.querySelector('img');
+  if(imgEl) imgEl.src = src;
+}
+function closeLightbox(){
+  var lb = document.getElementById('mcdm-lightbox');
+  if(lb) lb.remove();
+}
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeLightbox();
+});
+
 </script>
 </body>
 </html>
