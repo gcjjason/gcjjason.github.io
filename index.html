@@ -6,25 +6,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>防褥疮气垫床 · 产品设计研究与MCDM方法流</title>
 <style>
-   .gallery-section{padding:40px 0;color:#fff}
+  .gallery-section{padding:40px 0;color:#fff}
  .gallery-header{text-align:center;margin-bottom:30px}
  .gallery-header .idx{letter-spacing:3px;opacity:0.7;font-size:14px}
  .gallery-header h3{font-size:28px;margin:8px 0}
  .gallery-header p{opacity:0.8}
- .carousel-scene{width:100%;height:420px;perspective:1200px;display:flex;align-items:center;justify-content:center;overflow:hidden}
- .carousel-ring{position:relative;width:300px;height:380px;transform-style:preserve-3d;animation:rotateRing 22s linear infinite;}
+ .carousel-scene{
+   width:100%;
+   height: 620px;
+   perspective:1400px;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   overflow:hidden;
+ }
+ .carousel-ring{
+   position:relative;
+   width:320px;
+   height:360px;
+   transform-style:preserve-3d;
+   animation:rotateRing 22s linear infinite;
+ }
  .carousel-scene:hover .carousel-ring{animation-play-state:paused;}
- .gallery-item{position:absolute;width:220px;height:340px;transform-origin:center 140px;cursor:pointer;background:#1a1a1a;border-radius:12px;overflow:hidden;box-shadow:0 4px 14px #0006}
-.gallery-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-  backface-visibility: visible;
-}
+ .gallery-item {
+   position:absolute;
+   width:240px;
+   height:300px;
+   transform-origin: center 150px;
+   cursor:pointer;
+   background:#1a1a1a;
+   border-radius:12px;
+   box-shadow: 0 4px 14px #0006;
+ }
+ .gallery-img {
+   width: 100%;
+   height: 200px;
+   object-fit: cover;
+   display: block;
+   backface-visibility: visible;
+ }
  .gallery-desc{padding:10px}
  .gallery-title{font-weight:bold;font-size:16px}
- .gallery-sub{font-size:12px;opacity:0.7;margin-top:4px}
+ .gallery-sub{font-size:13px;opacity:0.7;margin-top:4px}
 .lightbox{
    position:fixed;
    top:0;
