@@ -4938,6 +4938,7 @@ html.lbx-lock .rail{display:none}
     if (!id || id === "home") return;
     var sec = document.getElementById(id);
     if (!sec) return;
+    if (sec.querySelector(".next-wrap")) return;  // 已有静态衔接块，不重复生成
 
     var next = navLinks[i + 1];
     var wrap = document.createElement("div");
@@ -4955,11 +4956,13 @@ html.lbx-lock .rail{display:none}
   });
 
   /* ---------- 键盘友好：跳至正文 ---------- */
-  var skip = document.createElement("a");
-  skip.className = "a11y-skip";
-  skip.href = "#literature";
-  skip.textContent = "跳到正文";
-  document.body.insertBefore(skip, document.body.firstChild);
+  if (!document.querySelector(".a11y-skip")) {
+    var skip = document.createElement("a");
+    skip.className = "a11y-skip";
+    skip.href = "#literature";
+    skip.textContent = "跳到正文";
+    document.body.insertBefore(skip, document.body.firstChild);
+  }
 })();
 </script>
 
@@ -6347,13 +6350,13 @@ table.lit tbody tr td,table.mkt tr td,.tmx tr td{
 
 /* 2. 章节名行：英文章名更实，"当前章 / 总章数"提到可读档 */
 .ch-open .ch-idx{color:rgba(198,220,248,.92)}
+/* 修正：让引导线落在 章名 与 计数 之间（伪元素默认排在末尾） */
+.ch-open .ch-idx::after{order:2}
 .ch-open .ch-count{
+  order:3;
   color:rgba(163,194,233,.9);font-weight:600;
   letter-spacing:.14em;
-}
-.ch-open .ch-count::before{
-  content:"";display:inline-block;width:14px;height:1px;margin-right:9px;
-  background:rgba(163,194,233,.5);vertical-align:middle;
+  white-space:nowrap;
 }
 
 /* 3. 移动端同步 */
